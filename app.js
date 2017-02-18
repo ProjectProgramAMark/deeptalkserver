@@ -8,6 +8,10 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+var mongoose = require('mongoose');
+
+
+
 var app = express();
 
 // view engine setup
@@ -32,6 +36,9 @@ app.use(function(req, res, next) {
   next(err);
 });
 
+
+mongoose.connect('mongodb://@localhost:27017/deeptalkserver');
+
 // error handlers
 
 // development error handler
@@ -54,6 +61,10 @@ app.use(function(err, req, res, next) {
     message: err.message,
     error: {}
   });
+});
+
+app.listen(6001, function() {
+  console.log("Listening on 6001 ayyyyy lmao...");
 });
 
 
