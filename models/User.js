@@ -3,9 +3,9 @@ var Schema = mongoose.Schema;
 var ObjectId = Schema.Types.ObjectId;
 
 var userSchema = new Schema({
-    email:   {type: String},
-    password: {type: String},
-    phoneNumber:  {type: String}
+    email:   {type: String, required: true},
+    password: {type: String, required: true},
+    phoneNumber:  {type: String, required: true}
 });
 
 var User = mongoose.model('User', userSchema);

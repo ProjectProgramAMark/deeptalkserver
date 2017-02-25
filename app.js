@@ -5,10 +5,17 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+
+
+var mongoose = require('mongoose');
+// Mongoose makes me use a different promise lib
+mongoose.Promise = require('bluebird');
+// mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://@localhost:27017/deeptalkserver');
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
-var mongoose = require('mongoose');
 
 
 
@@ -37,7 +44,6 @@ app.use(function(req, res, next) {
 });
 
 
-mongoose.connect('mongodb://@localhost:27017/deeptalkserver');
 
 // error handlers
 
